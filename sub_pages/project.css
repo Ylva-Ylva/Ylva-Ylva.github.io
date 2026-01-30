@@ -1,0 +1,10 @@
+.site-container {
+    padding: 0;
+}
+
+.project-grid {
+    display: flex;
+    margin: var(--navbar-height) 15%;
+    width: 100%;
+    height: calc(100% - var(--navbar-height) * 2);
+}
