@@ -3,7 +3,7 @@
 :root {
     --primary-font-color: whitesmoke;
     --secondary-font-color: #1b1b1b;
-    --background-color: #252525;
+    --background-color: #101010;
     --primary-color: #d394ff;
     --primary-color-faded: #d294ff49;
     --secondary-color: #4b3656;
@@ -15,7 +15,7 @@
     --navbar-side-offset: 5rem;
     --navbar-transition-duration: 0.3s;
 
-    --welcome-height: 70rem;
+    --welcome-height: 30rem;
 
     --pop-out-shadow: -2px 2px 5px var(--secondary-color-faded);
 }
@@ -139,7 +139,7 @@ body {
 }
 
 .welcome-text-container {
-    color: var(--primary-color);
+    color: var(--primary-font-color);
     text-align: center;
     position: relative;
     top: 30%;
@@ -147,7 +147,6 @@ body {
 
     transition: opacity 0.5s ease-out;
 }
-
 
 .welcome-text-container h1 {
     font-size: 6rem;
@@ -163,7 +162,7 @@ body {
     justify-content: space-evenly;
     flex-wrap: wrap;
     width: 100%;
-    height: 150rem;
+    height: auto;
     background-size: cover;
 }
 
@@ -333,6 +332,6 @@ body {
     top: var(--navbar-height);
     right: 5rem;
     user-select: none;
-    font-size: small;
+    font-size: x-small;
     z-index: -1;
 }

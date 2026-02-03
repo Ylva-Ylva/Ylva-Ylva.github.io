@@ -4,7 +4,41 @@
 
 .project-grid {
     display: flex;
-    margin: var(--navbar-height) 15%;
+    flex-wrap: wrap;
+    margin: var(--navbar-height) 10%;
     width: 100%;
     height: calc(100% - var(--navbar-height) * 2);
+}
+
+.project-item {
+    width: auto;
+    margin: 3rem;
+    padding: 5rem;
+    background-color: var(--primary-color-faded);
+    box-shadow: var(--pop-out-shadow);
+}
+
+.full-size {
+    width: auto;
+}
+
+.project-item p {
+    font-size: 2rem;
+}
+
+.category-title {
+    font-size: 4rem;
+}
+
+.description-and-image-container {
+    display: flex;
+}
+
+.description-shared_with_image {
+    width: 50%;
+    padding-right: 5rem;
+}
+
+.image-shared-with-description {
+    width: 50%;
 }
