@@ -26,25 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("scroll", (event) => {
     let scroll_y   = window.scrollY
-    let body_style = window.getComputedStyle(document.body)
     
-    let bg_color
-    let nav_color
     if (scroll_y == 0) {
-        bg_color  = body_style.getPropertyValue("--background-color")
-        nav_color = body_style.getPropertyValue("--primary-font-color")
         welcome_text.style.opacity = 1
     }
     else {
-        bg_color  = body_style.getPropertyValue("--primary-color")
-        nav_color = body_style.getPropertyValue("--secondary-font-color")
         welcome_text.style.opacity = 0
-    }
-        
-    header.style.backgroundColor = bg_color
-
-    for (let index = 0; index < header_texts.length; index++) {
-        const element = header_texts[index]
-        element.style.color = nav_color
     }
 })

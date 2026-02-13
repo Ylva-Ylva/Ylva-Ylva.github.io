@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
 :root {
     --primary-font-color: whitesmoke;
     --secondary-font-color: #1b1b1b;
-    --background-color: #101010;
+    --background-color: #202020;
     --primary-color: #d394ff;
     --primary-color-faded: #d294ff49;
     --secondary-color: #4b3656;
@@ -11,11 +11,11 @@
     --accent-color: #ff84bb;
 
     --navbar-hover-text-shadow: 1px 1px 5px var(--primary-color);
-    --navbar-height: 10rem;
+    --navbar-height: 14rem;
     --navbar-side-offset: 5rem;
     --navbar-transition-duration: 0.3s;
 
-    --welcome-height: 30rem;
+    --welcome-height: 50rem;
 
     --pop-out-shadow: -2px 2px 5px var(--secondary-color-faded);
 }
@@ -26,46 +26,60 @@
     margin: 0;
     padding: 0;
     box-sizing: inherit;
+
+    text-decoration: none;
 }
 
 html {
     color: var(--primary-font-color);
     font-size: 62.5%;
+    font-family: "Source Code Pro", monospace;
 }
 
 header {
     display: flex;
+    justify-content: right;
     position: sticky;
     top: 0;
     background-color: var(--background-color);
     width: 100%;
     height: var(--navbar-height);
-    box-shadow: 0 1px 2px var(--background-color);
-    box-shadow: 0 5px 5px var(--secondary-color);
 
     z-index: 10;
     transition: background-color var(--navbar-transition-duration) ease;
 }
 
 .navbar-name {
+    position: absolute;
+    left: var(--navbar-side-offset);
     font-size: 3.5rem;
     line-height: var(--navbar-height);
-    width: 30%;
     text-align: center;
+    margin: 0px !important;
 }
 
+.navbar-name a {
+    color: var(--primary-font-color);
+
+    transition: color var(--navbar-transition-duration) ease;
+}
+
+.navbar-name a:hover {
+    color: var(--primary-color);
+}
+
+
 .navbar {
-    position: absolute; /* Remove from document flow to allow navbar-name to be centered properly */
-    left: var(--navbar-side-offset);
-    width: 100rem;
-    font-size: 2rem;
+    position: relative;
+    right: var(--navbar-side-offset);
+    font-size: 2.2rem;
+    font-weight: 400;
     line-height: calc(var(--navbar-height) - 2rem);
 }
 
 .nav-text {
     color: var(--primary-font-color);
-    
-    margin: 1rem 1rem 0 1rem;
+    margin: 1rem 1.5rem 0 1.5rem;
 
     transition: color var(--navbar-transition-duration) ease;
 }
@@ -84,21 +98,22 @@ ul li a {
     color: var(--primary-font-color);
     text-align: center;
     text-decoration: none;
-    padding: 0 2rem;
+    padding: 0 1rem;
 }
 
 .navbar li a:hover {
-    text-shadow: var(--navbar-hover-text-shadow);
+    color: var(--primary-color);
 }
 
 .contact-links li a i:hover {
-    text-shadow: var(--navbar-hover-text-shadow);
+    color: var(--primary-color);
 }
 
 .contact-links {
-    position: absolute;
+    position: relative;
+    top: 1rem;
     right: var(--navbar-side-offset);
-    top: calc(var(--navbar-height) - 8rem);
+    line-height: var(--navbar-height);
 }
 
 .contact-links li a {
@@ -139,11 +154,10 @@ body {
 }
 
 .welcome-text-container {
-    color: var(--primary-font-color);
+    color: var(--background-color);
     text-align: center;
     position: relative;
     top: 30%;
-    text-shadow: 1px 1px 3px var(--accent-color);
 
     transition: opacity 0.5s ease-out;
 }
@@ -211,13 +225,14 @@ body {
 }
 
 .project-info-text-container {
-    top: 10rem;
+    top: 12rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .project-info-text-container * {
+    width: 80%;
     margin: auto;
     text-wrap-mode: wrap;
     text-shadow: 1px 1px 1px #000000;
@@ -232,7 +247,7 @@ body {
 .project-icon {
     position: absolute;
     right: 5rem;
-    bottom: 4rem;
+    bottom: 4.5rem;
     height: 6rem;
     font-size: 6rem;
 }
