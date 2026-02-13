@@ -11,6 +11,7 @@
 }
 
 .project-item {
+    color: var(--secondary-font-color);
     margin: 1%;
     padding: 3rem;
     background-color: var(--primary-color-faded);

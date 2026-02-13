@@ -16,13 +16,13 @@
 <body id="body">
     <header id="header">
         <h2 class="navbar-name nav-text">
-            <a href="../index.html">Name Name</a>
+            <a href="../index.html">ylva lundmark</a>
         </h2>
          <ul class="navbar">
             <li><a href="../index.html" class="nav-text">home</a></li>
-            <li><a href="sub_pages/terrain_tool.html" class="nav-text">specialization</a></li>
-            <li><a href="sub_pages/about_me.html" class="nav-text">about me</a></li>
-            <li><a href="cv.html" class="nav-text">cv</a></li>
+            <li><a href="../sub_pages/terrain_tool.html" class="nav-text">specialization</a></li>
+            <li><a href="../sub_pages/about_me.html" class="nav-text">about me</a></li>
+            <li><a href="https://drive.google.com/file/d/1Tz31-tup7_1jKDKBzWIoAen35kBv_icw/view" target="_blank" class="nav-text">cv</a></li>
         </ul>
         <ul class="contact-links">
             <li>
@@ -40,12 +40,15 @@
     <main>
         <div class="site-welcome">
             <div class="welcome-text-container" id="welcome-text">
-                <h1 class="secondary-font-color">
+                <h1>
                     Slip Up N Slide
                 </h1>
-                <h2 class="secondary-font-color" style="width: 50%; margin: auto; padding-top: 2rem;">
+                <h2 style="width: 50%; margin: auto; padding-top: 2rem;">
                     Slip-Up N Slide is a chaotic split screen multiplayer racing game about finding your own path down a slippery track with chaotic physics and interactive hazards.
                 </h2>
+                <h3><br>Made in PlaygroundSquad's in-house c++ engine.</h3>
+                <h3><br>This is the first game I ever made!</h3>
+                <h3><br>We implemented Jolt Physics for this game, which totally rules!</h3>
             </div>
         </div>
         <div class="site-container">
@@ -61,65 +64,49 @@
                     </p>
                 </div>
                 <div class="project-item full-size">
-                    <div class="category-title">Blood System</div>
+                    <div class="category-title">Split Screen Multiplayer</div>
                     <div class="description-and-image-container">
-                        <p class="description-shared_with_image">
-                            <br>I Designed and implemented a custom blood system. <br>
-                            It features a custom particle system in order to get collision results for the particles, something which is otherwise not possible in Godot.<br>
-                            Upon getting a collision result, an entry is added into a dictionary which holds all the relevant information for a background thread to compute the UV position of the hit.<br>
-                            Getting the UV position is required to mask pixels around the hit UV position which causes the shader to render the blood texture.<br>
-                            An important feature for us in the team was to have persistent blood in the level, which would cause more and more blood to show for each retry.<br>
-                            Because of engine limitations it wasn't possible to find each mesh after reloading the level as all IDs would be re-generated.<br>
-                            To circumvent this issue I simply stored all the successful raycasts in a dictionary and re-raycasted them when pressing retry. This causes the game to freeze as hundreds of raycasts are done on retry in some cases.<br>
-                            My solution was to start a thread per mesh which allowed the operations to be massively parallelized which hugely speed up the loading times.
+                        <p>
+                            <br>For this project, the biggest task I had was to implement local split screen multiplayer.<br><br>
+                            This task involved setting up multiple cameras dynamically depending on the amount of connected controllers, the function for which handles different pre-determined configurations of viewport sizes and placements. The system seamlessly handled between one and four users and didn't require any user input at all.<br><br>
+                            Something which was difficult at first was rewriting our singleplayer logic into something which worked for different amounts of players. I solved this while keeping our project structure the same by converting all of the player-related variables into arrays which were indexed with the controller id. The solution felt very seamless and let the other programmers on the team keep working as usual without having to pay attention to any new systems or big changes to the code.<br><br>
+                            Spawning the players when loading into the level was done in a similar fashion, where the controller id would determine which "PlayerStart" object to spawn the player at. This allowed designers to simply tag an empty object in Tensor with the PlayerStart tag. (Tensor is the editor for TenGine!)
                         </p>
-                        <img src="../m0ther_media/blood.webp" class="image-shared-with-description">
-                    </div>
-                </div>
-                <div class="project-item full-size">
-                    <div class="category-title">Settings</div>
-                    <div class="description-and-image-container">
-                        <p class="description-shared_with_image">
-                            <br>All of the settings as well as the settings UI functionality is implemented by me. It features many video settings as well as some for audio and input.<br>
-                            The system uses Godot's ConfigFile which allows for the saved values to be saved, loaded and modified across sessions via the settings menu.<br>
-                            When loading the settings script it tries to find the settings config file. If unsuccessful, a default one is created and used instead. This is realistically only used on first start of the game. <br>
-                            Something important to me was for the user to have access to a wide range of settings. These include screen mode, resolution, fps limit, VSync, motion blur, render scale and shadow quality.<br>
-                            Some work also went into controlling the audio volume. This is done by directly controlling FMOD VCAs. FMOD sometimes loads in slowly so handling async loading of the VCAs with scheduled retries was required<br>
-                        </p>
-                        <img src="../m0ther_media/settings.webp" class="image-shared-with-description">
                     </div>
                 </div>
                 <div class="project-item">
-                    <div class="category-title">Level Editor</div>
+                    <div class="category-title">Environmental Powerups & Hazards</div>
                     <div class="description-and-image-container">
-                        <p class="description-shared_with_image" style="width: 70%;">
-                            <br>Note: this was cut because it didn't stay aligned with the vision of the project as it evolved.<br>
-                            I built an in-engine grid-based 3D level editor designed for fast iterations and non-destructive workflows. <br>
-                            The editor runs directly inside the game and integrates custom gizmos, snapping logic, undoable commands, multiselecting and object duplication.
-                            Alongside the level editor I had to build a system for saving the level to locally. It also exports previews of the levels, which was displayed in the level-selection screen.<br>
-                            The most difficult part to implement was a system to undo/redo any changes made within the level editor -<br>
-                            It uses two separated command stacks keeping track of undo and redo histories.<br>
-                            Commands are stored as dictionaries containing the command type, affected nodes and an optional Variant for e.g. transforms. This made it easy to add new commands that could be be reversed.
+                        <p class="description-shared_with_image">
+                            <br>In Slip Up N Slide we wanted the world to be interactive and give life to otherwise mundane parts of the world by making them affect how you play.<br><br>
+                            To do this, I made the penguin character bounce when it hit balloons, allowing you to shortcut the route! I also made snow piles slow the pinguin down and I added speed boosters that would cause the penguin to go faaast!<br><br>
+                            Since the game uses the Jolt Physics engine, all of these power-ups simply affect the velocity of the player in different ways, the hardest part was actually the collision detection- something which had to be implemented using Jolt.
                         </p>
-                        <img src="../m0ther_media/level_editor.webp" class="image-shared-with-description">
+                        <img src="slip_up_media/powerup.webp" class="image-shared-with-description">
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="category-title">Controller Haptics</div>
+                    <div class="description-and-image-container">
+                        <p>
+                            <br>Note: this is all protected by an NDA so I will be brief.<br>
+                            A cool-factor that we wanted for the game was proper utilization of the DualSense controllers for the PlayStation 5. I gladly took it upon myself to create a kick-ass class that handled all controller features we needed and more-<br><br>
+                            As controller input is implemented in TenGine, I did not work on that part. I did however implement rumble, lightbar colour support, gyro support and a huge range of different adaptive trigger modes.<br><br>
+                            The gyro didn't end up being used but the rest was. For example, rumble was triggered when crashing into snowpiles and was also paired with an adaptive trigger mode that would vibrate the triggers on the controller, causing the crashes to feel impactful! :>
+                        </p>
                     </div>
                 </div>
                 <div class="project-item">
                     <div class="category-title">Additional Contributions</div>
                     <p>
-                        <br>Additionally, I made a creature modification system which allows the user to click on creatures and modify them.<br>
-                        The system used a switch on the selected modification and heavily relied on tweening property values to keep the system readable for other group members.<br>
-                        Based on the selected modification, the system would handle things such as animating the creature scale, movement speed, offset from the ground and much more-
-                        everything required to go from cute little creature to a big cube to a balloon and back to cute little creature!<br><br>
-                        
-                        On top of that I also made the animation blend trees for both types of creatures and implemented parts of it in code, other parts were done by one of my groupmates.<br><br>
-
-                        I also developed a level switcher that works for all levels by keeping track of the current level and simply changing scene to the next level in the level list.<br>
-                        There are more areas that I worked on but all of which were quite small or simply me helping others out with their code!
+                        <br>I tried to implement a ragdoll system that would be used during hard crashes but did not manage to get the joints of the model to update properly so it unfortunately got dropped. The ragdolling worked by iterating over the penguin's joints and building Jolt Physics bodies with constraints between them and simulating the physics bodies. The plan was to use the physics body position and update the penguin's joints positions to match them. This didn't work with how the engine handled parent-child transforms. I decided to therefore scrap the feature as we didn't have the time needed to get the feature across the finish line.
                     </p>
                 </div>
             </div>
         </div>
     </main>
+    <footer>
+        Hi! It looks like you've reached the end of this page. If you're interested in what I do, feel free to send me a DM on LinkedIn!
+    </footer>
 </body>
 </html>

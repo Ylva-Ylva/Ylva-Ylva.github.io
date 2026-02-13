@@ -168,7 +168,7 @@ body {
 }
 
 .welcome-text-container h2 {
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 .site-container {
@@ -349,4 +349,12 @@ body {
     user-select: none;
     font-size: x-small;
     z-index: -1;
+}
+
+footer {
+    height: var(--navbar-height);
+    background-color: var(--background-color);
+    text-align: center;
+    text-wrap: wrap;
+    padding-top: 3rem;
 }
