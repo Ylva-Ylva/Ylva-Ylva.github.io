@@ -5,15 +5,14 @@
 .project-grid {
     display: flex;
     flex-wrap: wrap;
-    margin: var(--navbar-height) 10%;
+    margin: var(--navbar-height) 15%;
     width: 100%;
     height: calc(100% - var(--navbar-height) * 2);
 }
 
 .project-item {
-    width: auto;
-    margin: 3rem;
-    padding: 5rem;
+    margin: 1%;
+    padding: 3rem;
     background-color: var(--primary-color-faded);
     box-shadow: var(--pop-out-shadow);
 }
@@ -43,4 +42,10 @@
 .image-shared-with-description {
     width: 50%;
     object-fit: contain;
+}
+
+.big-image {
+    padding: 0;
+    margin-top: 4rem;
+    width: 100%;
 }
