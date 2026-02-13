@@ -65,14 +65,12 @@
                     <div class="category-title">Blood System</div>
                     <div class="description-and-image-container">
                         <p>
-                            <br>I Designed and implemented a custom blood system. <br>
-                            It features a custom particle system in order to get collision results for the particles, something which is otherwise not possible in Godot.<br>
+                            <br>I designed and implemented a custom blood system. <br>
+                            It features a custom particle system in order to get collision results for the particles, something which is otherwise not possible in Godot.<br><br>
                             Upon getting a collision result, an entry is added into a dictionary which holds all the relevant information for a background thread to compute the UV position of the hit.<br>
-                            Getting the UV position is required to mask pixels around the hit UV position which causes the shader to render the blood texture.<br>
-                            An important feature for us in the team was to have persistent blood in the level, which would cause more and more blood to show for each retry.<br>
-                            Because of engine limitations it wasn't possible to find each mesh after reloading the level as all IDs would be re-generated.<br>
-                            To circumvent this issue I simply stored all the successful raycasts in a dictionary and re-raycasted them when pressing retry. This causes the game to freeze as hundreds of raycasts are done on retry in some cases.<br>
-                            My solution was to start a thread per mesh which allowed the operations to be massively parallelized which hugely speed up the loading times.
+                            Getting the UV position is required to mask pixels around the hit UV position which causes the shader to render the blood texture.<br><br>
+                            An important feature for us in the team was to have persistent blood in the level, which would cause more and more blood to show for each retry. Because of engine limitations it wasn't possible to find each mesh after reloading the level as all IDs would be re-generated. To circumvent this issue I simply stored all the successful raycasts in a dictionary and re-raycasted them when pressing retry. This causes the game to freeze as hundreds of raycasts are done on retry in some cases.<br>
+                            My solution was to start a thread per mesh which allowed the operations to be massively parallelized which hugely sped up the loading times.
                         </p>
                     </div>
                 </div>
@@ -83,10 +81,8 @@
                     <div class="category-title">Settings</div>
                     <div class="description-and-image-container">
                         <p>
-                            <br>All of the settings as well as the settings UI functionality is implemented by me. It features many video settings as well as some for audio and input.<br>
-                            The system uses Godot's ConfigFile which allows for the saved values to be saved, loaded and modified across sessions via the settings menu.<br>
-                            When loading the settings script it tries to find the settings config file. If unsuccessful, a default one is created and used instead. This is realistically only used on first start of the game. <br>
-                            Something important to me was for the user to have access to a wide range of settings. These include screen mode, resolution, fps limit, VSync, motion blur, render scale and shadow quality.<br>
+                            <br>All of the settings as well as the settings UI functionality is implemented by me. It features many video settings as well as some for audio and input.<br><br>
+                            The system uses Godot's ConfigFile which allows for the saved values to be saved, loaded and modified across sessions via the settings menu. When loading the settings script it tries to find the settings config file. If unsuccessful, a default one is created and used instead. This is realistically only used on first start of the game. Something important to me was for the user to have access to a wide range of settings. These include screen mode, resolution, fps limit, VSync, motion blur, render scale and shadow quality.<br><br>
                             Some work also went into controlling the audio volume. This is done by directly controlling FMOD VCAs. FMOD sometimes loads in slowly so handling async loading of the VCAs with scheduled retries was required<br>
                         </p>
                     </div>
