@@ -41,4 +41,5 @@
 
 .image-shared-with-description {
     width: 50%;
+    object-fit: contain;
 }
