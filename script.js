@@ -22,6 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     project_infos.push(element.parentElement.lastElementChild)
   }
+
+    check_window_size()
 });
 
 document.addEventListener("scroll", (event) => {
@@ -34,3 +36,20 @@ document.addEventListener("scroll", (event) => {
         welcome_text.style.opacity = 0
     }
 })
+
+addEventListener("resize", (event) => {
+    check_window_size()
+})
+
+function check_window_size() {
+    if (window.innerWidth < 1100) {
+        var path = window.location.pathname;
+        var page = path.split("/").pop();
+        if (page == "index.html") {
+            window.location.href = "sub_pages/too_narrow_screen.html";
+        }
+        else {
+            window.location.href = "../sub_pages/too_narrow_screen.html";
+        }
+    }
+}
