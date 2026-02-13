@@ -64,7 +64,7 @@
                 <div class="project-item full-size">
                     <div class="category-title">Blood System</div>
                     <div class="description-and-image-container">
-                        <p class="description-shared_with_image">
+                        <p>
                             <br>I Designed and implemented a custom blood system. <br>
                             It features a custom particle system in order to get collision results for the particles, something which is otherwise not possible in Godot.<br>
                             Upon getting a collision result, an entry is added into a dictionary which holds all the relevant information for a background thread to compute the UV position of the hit.<br>
@@ -74,26 +74,30 @@
                             To circumvent this issue I simply stored all the successful raycasts in a dictionary and re-raycasted them when pressing retry. This causes the game to freeze as hundreds of raycasts are done on retry in some cases.<br>
                             My solution was to start a thread per mesh which allowed the operations to be massively parallelized which hugely speed up the loading times.
                         </p>
-                        <img src="m0ther_media/blood.webp" class="image-shared-with-description">
                     </div>
+                </div>
+                <div class="project-item" style="width: 100%; height: auto;">
+                    <img src="m0ther_media/blood.webp" class="big-image">
                 </div>
                 <div class="project-item full-size">
                     <div class="category-title">Settings</div>
                     <div class="description-and-image-container">
-                        <p class="description-shared_with_image">
+                        <p>
                             <br>All of the settings as well as the settings UI functionality is implemented by me. It features many video settings as well as some for audio and input.<br>
                             The system uses Godot's ConfigFile which allows for the saved values to be saved, loaded and modified across sessions via the settings menu.<br>
                             When loading the settings script it tries to find the settings config file. If unsuccessful, a default one is created and used instead. This is realistically only used on first start of the game. <br>
                             Something important to me was for the user to have access to a wide range of settings. These include screen mode, resolution, fps limit, VSync, motion blur, render scale and shadow quality.<br>
                             Some work also went into controlling the audio volume. This is done by directly controlling FMOD VCAs. FMOD sometimes loads in slowly so handling async loading of the VCAs with scheduled retries was required<br>
                         </p>
-                        <img src="m0ther_media/settings.webp" class="image-shared-with-description">
                     </div>
+                </div>
+                <div class="project-item" style="width: 100%; height: auto;">
+                    <img src="m0ther_media/settings.webp" class="big-image">
                 </div>
                 <div class="project-item">
                     <div class="category-title">Level Editor</div>
                     <div class="description-and-image-container">
-                        <p class="description-shared_with_image" style="width: 70%;">
+                        <p>
                             <br>Note: this was cut because it didn't stay aligned with the vision of the project as it evolved.<br>
                             I built an in-engine grid-based 3D level editor designed for fast iterations and non-destructive workflows. <br>
                             The editor runs directly inside the game and integrates custom gizmos, snapping logic, undoable commands, multiselecting and object duplication.
@@ -102,8 +106,10 @@
                             It uses two separated command stacks keeping track of undo and redo histories.<br>
                             Commands are stored as dictionaries containing the command type, affected nodes and an optional Variant for e.g. transforms. This made it easy to add new commands that could be be reversed.
                         </p>
-                        <img src="m0ther_media/level_editor.webp" class="image-shared-with-description">
                     </div>
+                </div>
+                <div class="project-item" style="width: 100%; height: auto;">
+                    <img src="m0ther_media/level_editor.webp" class="big-image">
                 </div>
                 <div class="project-item">
                     <div class="category-title">Additional Contributions</div>
