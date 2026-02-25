@@ -44,13 +44,58 @@
                     Terrain Tool
                 </h1>
                 <h2 class="secondary-font-color">
-                    Marching Cubes in-editor Tool for Game Terrain
+                    Marching Cubes in-editor Tool for Game Terrain<br>Developed in 4 weeks
                 </h2>
             </div>
         </div>
-        <div class="site-container">
-            <div class="project-grid secondary-font-color">
-                <h2>This project is currently being worked on!<br>It'll be finished on the 27th of February.<br>Check back at a later time!</h2>
+                <div class="site-container">
+            <div class="project-grid">
+                <div class="project-item full-size">
+                    <div class="category-title">Marching Cubes</div>
+                    <div class="description-and-image-container">
+                        <p>
+                            <br>The terrain tool uses marching cubes to convert a 3D grid of numerical values (iso values) into a mesh.<br>
+                            <br>Marching cubes work by iterating each voxel in the desired area and by encoding the iso value of each corner as a bit in an 8-bit integer, a cube configuration index. It is used to look up edge indices in a triangulation table.
+                            The result from the look up can look like this:<br>
+                            [0, 11, 2, 8, 11, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]<br>
+                            where each triangle has 3 indices which means that we can create a for-loop with a step size of 3 to iterate over the edge indices in order to create triangles. In a blocky fashion, the center point between <i>edge index a</i> and <i>edge index b</i> can be used to generate vertex positions but in order to smoothen the mesh, the vertex position can be interpolated between the two edge indices based on the iso values they correspond to. This will cause the surface of the generated mesh to be positioned exactly where the iso grid transitions from above the <i>surface value</i> to below the <i>surface value</i>, resulting in a smoother terrain.<br><br>
+                            When generating blocky terrain, vertices are duplicated for each face in order to allow for flat-shaded terrain. For the smooth terrain, I am generating indices which allows the terrain to have a lower vertex count as well as easily share normals, which are calculated by taking all of the connected faces' normals and averaging them together.
+                        </p>
+                    </div>
+                </div>
+                <div class="project-item full-size">
+                    <div class="description-and-image-container">
+                        <img src="terrain_tool_media/blocky_terrain.webp" style="width: 50%;">
+                        <img src="terrain_tool_media/smooth_terrain.webp" style="width: 50%;">
+                    </div>
+                    <p>Showing difference between center of edge interpolation and iso value interpolation for vertices.</p>
+                </div>
+                <div class="project-item" style="width: 100%; height: auto;">
+                    <img src="m0ther_media/blood.webp" class="big-image">
+                </div>
+                <div class="project-item full-size">
+                    <div class="category-title">Plugin Development</div>
+                    <div class="description-and-image-container">
+                        <p>
+                            <br>To allow for creating terrain in the Godot editor, a plugin had to be created. Plugins are loaded on startup and scripts marked as tools are able to run inside of the editor.<br><br>
+                            <b>_forward_3d_gui_input</b> is a function which can be overridden to provide an input event for anything happening inside of the 3D viewport. This is used to handle button presses in order to create chunks of terrain. To do this, a plane is created at the world origin at height 0 which we intersect a ray with to figure out where to place the chunk. To prevent chunk placement every time one would click in the viewport, this code only runs when the custom <i>Terrain</i> node is selected inside of the hierarchy, allowing easy control of terrain management without interfering with normal editor usage.<br><br>
+                            Similar work went into painting the mesh, which meant altering the iso grid values to cause the terrain to generate differently. Instead of intersecting a ray against a plane, an intersection test against the terrain mesh itself had to take place. Luckily, Godot makes it really easy to generate a trimesh collider for objects (only one line of code!) so that was no issue. The hard part was implementing the changes to the iso grid as well as regenerating chunks properly. For this, two different kinds of brushes were created, one for painting square shapes and one for spherical shapes. The iso grid values around the intersection point are altered gradually to be under what is considered the surface threshold. A problem was encountered as painting along the edges of a chunk would cause a harsh cutoff; the neighboring chunks weren't being regenerated. To solve this, when an iso value would pass from under the surface threshold to above, or the opposite, the local X and Z coordinates within the chunks would be sampled to detect if the iso value is on a border. If it is, then add the chunk located in the borders direction to a list of affected chunks. If two chunks gets added to the list, for both the X and Z axes- a chunk would also have to be regenerated on the diagonals. So this was naturally handled as well.<br><br>
+                            To make usage of the tool easy, work went into making a custom dock for the editor. Godot has excellent support for creating your own custom UI that can be integrated with the engine and made to work just like their own UI. I decided to create a custom dock designed to be positioned next to the Inspector. Then, functionality was added to to it by creating buttons that would allow the user to select the chunk management tool or the paint tool. Both of these would have their own set of buttons and inputs to control the type of terrain created, chunk size or brush type, brush strength, height, width, radius and so on. 
+                        </p>
+                    </div>
+                </div>
+                <div class="project-item" style="width: 100%; height: auto;">
+                    <img src="m0ther_media/settings.webp" class="big-image">
+                </div>
+                <div class="project-item" style="width: 100%; height: auto;">
+                    <img src="m0ther_media/level_editor.webp" class="big-image">
+                </div>
+                <div class="project-item">
+                    <div class="category-title">Procedural Generation</div>
+                    <p>
+                        <br>This is something that will be added at a later date as the project is still ongoing!
+                    </p>
+                </div>
             </div>
         </div>
     </main>
