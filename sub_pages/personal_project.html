@@ -70,7 +70,7 @@
                     <div class="category-title">World Objects & Custom Animation System</div>
                     <div class="description-and-image-container">
                         <p>
-                            <br>On top of the streamed map, I layered a lightweight world object system that spawns interactable objects directly onto tiles.<br><br>
+                            <br>On top of the streamed map, I added a world object system that spawns interactable objects directly onto tiles.<br><br>
 
                             Objects spawn at random intervals and on random visible tiles. Each object is stored as a dictionary containing its texture, a random local offset within the tile, and animation state data such as <i>curr_frame</i>, <i>array_index</i>, and activation flags.<br><br>
                             Instead of using Godot's built-in animation tools, I implemented a fully custom animation pipeline. During draw time, I extract the texture's filename from its resource path using a regular expression. That name determines which sprite array to sample from. Because animation selection happens at render time, I can easily transition objects between animation states by incrementing their <i>array_index</i>. I want to highlight that this was a completely unnecessary way of going about this, normally in Godot, a node with animation capabilities would be used to skip all of the hassle of setting up such a system but since this was the first time I used Godot, I wasn't aware of all the features within the Engine- which lead to me making some custom functionality for things that did not need it.<br><br>
