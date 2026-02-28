@@ -82,10 +82,11 @@
                     </div>
                 </div>
                 <div class="project-item full-size">
-                    <div class="category-title">Plugin Development</div>
+                    <div class="category-title">Procedural Terrain Demo</div>
                     <div class="description-and-image-container">
                         <p>
-                            <br>This is something that will be added at a later date as the project is still ongoing!
+                            <br>When working on this project, something that was always in the back of my mind was how cool it'd be to utilize this fancy meshing algorithm with procedural generation; as it is something I find quite fascinating! This part of the project became a small bonus feature as I did not expect to finish the marching cube algorithm as well as the mesh painting as fast as I did. See this as a demo of what the tool/algorithm could be used for, more so than an actual finished thing.<br><br>
+                            To make procedural terrain that was easily usable while still keeping to the in-engine workflow, I decided to add on to the chunk management part of the tool. I added a couple buttons that would show up in the dock that allows for creating of terrain which adheres to pre-determined generation rules. So depending on which terrain option that was selected, a noise algorithm would generate an iso value which would then be processed in certain ways, such as fading out the terrain towards the top of the chunk. To get procedurally generated terrain for this tool I simply used a mix of 2D and 3D perlin noise, depending on the terrain type. More effort went into blending chunks into each other properly- which first was an issue because the mesh fadeout I implemented towards the edges of the chunks used a linear fadeout across the entire chunk. This meant that the edge at the opposite side of the chunk from which it fades from would be altered, something which wouldn't be applied to the neighboring chunks and therefore cause a desync in the processed noise values at the borders. I fixed this by implementing a smoothstep that would be more aggressive towards the start of the border and completely moot at the end of the border.
                         </p>
                     </div>
                 </div>
