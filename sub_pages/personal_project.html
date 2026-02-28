@@ -59,7 +59,7 @@
                             The system depends on <i>PraxisMapperGPSPlugin</i>, a plugin that allows for starting the GPS service and getting updates to the <i>_on_gps_update()</i> function but not much else.<br><br>
                             
                             The longitude and latitude of the player are passed to the GPS update function, from which a new center is set, calculated using the Web Mercator projection. The world is positioned around it accordingly- every tile that is rendered is offset from the center. Initially, I was setting the center position directly but I noticed that this caused the entire map to jump as a new position would be fetched. To fix this, a simple lerp between the previous center and the wanted center would take place over multiple frames. This simply smoothened the position change and made it much more pleasing to look at.<br><br>
-                            The actual map tiles within a configurable X/Y range around the center tile are fetched from OpenStreetMap using their respective X and Y coordinates, as well as the zoom level; a URL is constructed in the format <i>https://tile.openstreetmap.org/{z}/{x}/{y}.png</i> and requested with an http request. The result is fetched asynchronously so I bind the <i>resuest completed</i> signal to a function that handles converting the fetched image to an ImageTexture, which I store in a dictionary keyed by its tile coordinates. This is handy to be able to render it at the correct offset from the center_tile in the </i>_draw()<i> function.<br><br>
+                            The actual map tiles within a configurable X/Y range around the center tile are fetched from OpenStreetMap using their respective X and Y coordinates, as well as the zoom level; a URL is constructed in the format <i>https://tile.openstreetmap.org/{z}/{x}/{y}.png</i> and requested with an http request. The result is fetched asynchronously so I bind the <i>request_completed</i> signal to a function that handles converting the fetched image to an ImageTexture, which I store in a dictionary keyed by its tile coordinates. This is handy to be able to render it at the correct offset from the center_tile in the </i>_draw()<i> function.<br><br>
                             
                             I made sure to only issue an http request to OpenStreetMap if the tile doesn't exist in a <i>requested_tiles</i> dictionary. I also make sure to only fetch tiles that haven't been fetched and processed. This prevents duplicate network calls drastically.<br><br>
                             As the player moves, I don't snap the map to the new tile center. Instead, I store <i>lerp_start</i> and <i>target_center</i> and increment a lerp alpha value each frame in <b>_process()</b>. The center tile is interpolated smoothly over time, which makes GPS updates feel stable and intentional rather than jittery. All rendering is handled manually in <b>_draw()</b>, where each tile's screen position is calculated relative to the current center tile and viewport size.
@@ -80,6 +80,23 @@
                             Click handling is done manually using an AABB intersection test against each object's calculated screen position. I added a configurable pixel buffer to expand the AABB and make touch input more forgiving on mobile devices for smaller objects. When an intersection is detected, I branch behavior based on the parsed texture name; rocks are added to the player's inventory, while an activated portal triggers a scene change to the dungeon.<br><br>
 
                             The result is a system where real-world geography becomes the foundation for gameplay. The map streams live data, objects spawn dynamically on top of it, and animation and interaction are adequately controlled.
+                        </p>
+                    </div>
+                </div>
+                <div class="project-item full-size">
+                    <div class="category-title">Procedural Dungeons</div>
+                    <div class="description-and-image-container">
+                        <p>
+                            <br>When clicking on a dungeon, I change the scene from the world-map one to a scene in which a dungeon is generated procedurally. I wanted to experiment with this as I was simply having fun with Godot at this point in the project- therefore I mostly winged the entire dungeon generation algorithm.<br><br>
+                            TODO
+                        </p>
+                    </div>
+                </div>
+                <div class="project-item full-size">
+                    <div class="category-title">Inventory & Combat</div>
+                    <div class="description-and-image-container">
+                        <p>
+                            <br>TODO                            
                         </p>
                     </div>
                 </div>
