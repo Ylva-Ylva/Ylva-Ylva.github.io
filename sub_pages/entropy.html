@@ -53,45 +53,77 @@
         </div>
         <div class="site-container">
             <div class="project-grid" style="padding-top: 5rem;">
-                <div class="project-item">
-                    <div class="category-title">Info</div>
-                    <p>
-                        <span><br>Genre: </span> Puzzle
-                        <span><br>Engine: </span> Unreal Engine 5
-                        <span><br>Team Size: </span> 16
-                        <span><br>Platform: </span> PC & PS5
-                        <span><br>Time: </span> 9 weeks
-                    </p>
-                </div>
-                <div class="project-item" style="width: 60%;">
-                    <div class="category-title">Controller Integration (DualSense)</div>
-                    <p>
-                        <br>I worked with the Sony PlayStation 5 SDK to implement<br>
-                        audio, rumble, audio-based rumble, lightbar colors and adaptive triggers for DualSense controllers.<br>
-                        Since this is all covered by an NDA signed with Sony, I will not share anything regarding the implementation.
-                    </p>
-                </div>
-                <div class="project-item" style="width: 60%;">
-                    <div class="category-title">Settings</div>
+                <div class="project-item full-size">
                     <div class="description-and-image-container">
-                        <p>
-                            <br>All of the settings functionality is implemented by me, except for the UI. It has some video, audio and input settings.<br>
-                            The system uses Unreal Engine's SaveGame object which allows for the saved values to be stored, loaded and modified across sessions via the settings menu.<br>
-                            This system is quite basic as Unreal Engine makes it very easy to save data across sessions using Blueprints.
-                        </p>
+                        <div class="project-item">
+                            <div class="category-title">Info</div>
+                            <p>
+                                <span><br>Genre:     </span> Puzzle
+                                <span><br>Engine:    </span> Unreal Engine 5
+                                <span><br>Team Size: </span> 16
+                                <span><br>Platform:  </span> PC & PS5
+                                <span><br>Time:      </span> 9 weeks
+                            </p>
+                        </div>
+                        <div class="project-item">
+                            <div class="category-title">Controller Integration (DualSense)</div>
+                            <p>
+                                <br>I worked with the <b>Sony PlayStation 5 SDK</b> to implement<br>
+                                audio, rumble, audio-based rumble, lightbar colors and adaptive triggers for 
+                                DualSense controllers.<br><br>
+                                Since this is all covered by an <b>NDA signed with Sony</b>, I will not share anything 
+                                regarding the implementation.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="project-item" style="width: 30%; height: 50rem;">
-                    <img src="entropy_media/settings.webp" style="height: 100%;">
+                <div class="project-item full-size">
+                    <div class="description-and-image-container" style="height: 50rem;">
+                        <div class="description-shared_with_image" style="width: 80%;">
+                            <div class="category-title">Settings</div>
+                            <p>
+                                <br>All of the settings functionality is implemented by me, except for the UI. 
+                                It has some video, audio and input settings.<br><br>
+                                The system uses Unreal Engine's SaveGame object which allows for the saved values 
+                                to be stored, loaded and modified across sessions via the settings menu. This system 
+                                is quite basic as Unreal Engine makes it very easy to save data across sessions 
+                                using Blueprints.
+                            </p>
+                        </div>
+                        <div id="entropy-settings" class="image-shared-with-description" style="background-size: cover;"></div>
+                    </div>
                 </div>
                 <div class="project-item">
                     <div class="category-title">Interactive insect VFX</div>
                     <div class="description-and-image-container">
                         <p>
-                            <br>A problem we had in Entropy was a lack of situational awareness because of how dark the game is, and we didn't want to increase the brightness as that would ruin the immersion and feel we wanted.
-                            The idea I came up with was having thousands of glowing insects crawling on the walls, floors and ceilings of the levels. We didn't want them to constantly glow so we settled for having them absorb the light you, as the player would emit from the light gun. Having them behave like old light switches that would glow in the dark meant that we could keep our environment dark and use emissive materials on the insects to help the player orient themselves.<br><br>
-                            Because we wanted them to interact with the light orbs the player would shoot, I originally designed the system using Blueprints but quickly switched to using Niagara- Unreal Engine's particle system. This was because it would be highly inefficient to update potentially tens of thousands of insects on the CPU. The insects use signed distance fields to traverse on meshes in the world and walk around pretty mindlessly using various forces. Implementing interactivity with code was a daunting task that actually proved to be quite easy using Blueprints. I also struggled a bit with creating custom scratch modules that allowed me to significantly simplify the particle update state by hiding complicated code beneath easily understandable function names. With all of this I managed to make the insects flee from the player and the impact of the light orbs. Making them glow temporarily after being exposed to light was a combination of a custom scratch module using input from Blueprints and using the particle color in the material the insects used.<br><br>
-                            This was a whole adventure into interactive visual systems and learning Niagara, which I really turned out to enjoy using! What I found coolest was how easy it was to change variables from code as well as it being possible to call a Blueprint function from the VFX system itself!<br>
+                            <br>A problem we had in Entropy was a lack of situational awareness because of how dark 
+                            the game is, and we didn't want to increase the brightness as that would ruin the 
+                            immersion and feel we wanted. The idea I came up with was having thousands of glowing 
+                            insects crawling on the walls, floors and ceilings of the levels. We didn't want them 
+                            to constantly glow so we settled for having them absorb the light you, as the player 
+                            would emit from the light gun. Having them behave like old light switches that would 
+                            glow in the dark meant that we could keep our environment dark and use emissive 
+                            materials on the insects to help the player orient themselves.<br><br>
+
+                            Because we wanted them to interact with the light orbs the player would shoot, I 
+                            originally designed the system using Blueprints but quickly switched to using Niagara- 
+                            Unreal Engine's particle system. This was because it would be highly inefficient to 
+                            update potentially tens of thousands of insects on the CPU. The insects use <b>signed 
+                            distance fields</b> to traverse on meshes in the world and walk around pretty mindlessly 
+                            using various forces. Implementing interactivity with code was a daunting task that 
+                            actually proved to be quite easy using Blueprints. I also struggled a bit with creating 
+                            custom <b>scratch modules</b> that allowed me to significantly simplify the particle update 
+                            state by hiding complicated code beneath easily understandable function names. With all 
+                            of this I managed to make the insects flee from the player and the impact of the light 
+                            orbs. Making them glow temporarily after being exposed to light was a combination of a 
+                            custom scratch module using input from Blueprints and using the particle color in the 
+                            material the insects used.<br><br>
+
+                            This was a whole adventure into interactive visual systems and learning Niagara, which 
+                            I really turned out to enjoy using! What I found coolest was how easy it was to change 
+                            variables from code as well as it being possible to call a Blueprint function from the 
+                            VFX system itself!<br>
                             (I did that for another VFX system, not the insects.)
                         </p>
                     </div>
@@ -102,7 +134,13 @@
                 <div class="project-item">
                     <div class="category-title">Additional Contributions</div>
                     <p>
-                        <br>In addition to my main tasks, I also implemented the initial version of the character controller, a small system that made placing interactive sounds into the levels easy for designers and just generally helped out a bunch!
+                        <br>In addition to my main tasks, I also implemented the initial version of the character 
+                        controller, a small system that made placing interactive sounds into the levels easy for 
+                        designers and just generally helped out a bunch!<br><br>
+                        
+                        For this project, I would call myself more of a generalist as I didn't work on that many 
+                        specialized features, which means that this page is rather empty. See 
+                        <a href="m0ther.html">M0THER</a>, my most recent game project for more specialized work.
                     </p>
                 </div>
             </div>

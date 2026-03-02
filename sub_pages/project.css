@@ -49,3 +49,8 @@
     padding: 0;
     width: 100%;
 }
+
+#entropy-settings {
+    background-size: contain;
+    background-image: url("entropy_media/settings.webp");
+}
